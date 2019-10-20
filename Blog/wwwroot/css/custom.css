@@ -1,0 +1,24 @@
+#postTitle {
+    background: #dd0707;
+    clear: none;
+    width: 379px;
+    height: 42px;
+    float: left;
+    margin: 0;
+    padding: 0;
+    font-size: 20px;
+    color: #605e5e;
+    font-weight: 600;
+    text-align: center;
+    /*padding: 5px 10px;*/
+}
+
+.favorito {
+    background: none;
+    border: none;
+    float: right;
+}
+
+    .favorito.adicionado {
+        color: orange;
+    }
