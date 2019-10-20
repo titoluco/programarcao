@@ -1,52 +1,4 @@
-﻿@*@{
-        ViewData["Title"] = "Home Page";
-    }
-
-    <div class="text-center" id="blog-title">
-        <h1 class="display-4">MBC - Meu Bloguinho Camarada</h1>
-        <p>study and share, a learning philosophy</p>
-    </div>
-
-    <div class="alert alert-info show" id="connection-status"></div>
-
-    <div class="blog-list card-columns" id="blog-list"></div>
-
-
-    <div id="blog-item-container"></div>
-
-    <div class="center">
-        <button class="btn btn-primary"
-                onclick="pageEvents.loadMoreBlogPosts();">
-            ver mais
-        </button>
-        <br /><br />
-    </div>
-
-    <script id="blog-item" type="text/template">
-        <div id="{{Link}}" class="blog-item">
-            {{Content}}
-        </div>
-        <a href="#blog-title" class="btn btn-primary">voltar</a>
-    </script>
-
-    <script id="blog-card" type="text/template">
-        <div class="card">
-            <div class="card-body">
-                <h5 class="card-title">
-                    {{PostId}} -
-                    {{Title}}
-                </h5>
-                <p class="cardtext">
-                    {{ShortDescription}}
-                </p>
-                <button class="btn btnprimary" onclick="pageEvents.loadBlogPost('{{Link}}');">
-                    ir
-                </button>
-            </div>
-        </div>
-    </script>*@
-
-@{
+﻿@{
     ViewData["Title"] = "Home Page";
 }
 
@@ -138,6 +90,10 @@
         <a href="#blog-title" class="btn btn-primary" onclick="pageEvents.ExitBlogPost()">voltar</a>
 
     </script>
+</div>
+<div class="center">
+    <button class="btn btn-primary" onclick="pageEvents.loadMoreBlogPosts();">ver mais</button>
+    <br /><br />
 </div>
 
 <script id="blog-content-not-found" type="text/template">
