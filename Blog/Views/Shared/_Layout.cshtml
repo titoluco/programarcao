@@ -1,0 +1,180 @@
+﻿<!doctype html>
+<html lang="en">
+<head>
+
+    <meta charset="utf-8" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+    <meta name="description" content="study and post, a learning philosophy">
+    <meta name="theme-color" content="#db5945">
+    <link rel="manifest" href="/manifest.json">
+    <title>Programarcao</title>
+
+    <!--<link rel="stylesheet" href="~/lib/bootstrap/dist/css/bootstrap.css" />-->
+    <!-- FAVICON -->
+    <link rel="icon" href="~/images2/favicon/favicon.png">
+    <link rel="icon" href="~/images2/favicon/favicon.png" sizes="57x57">
+    <link rel="icon" href="~/images2/favicon/favicon.png" sizes="72x72">
+    <link rel="icon" href="~/images2/favicon/favicon.png" sizes="114x114">
+    <link rel="icon" href="~/images2/favicon/favicon.png" sizes="144x144">
+
+    <!-- STYLE -->
+    <link rel="stylesheet" href="~/css2/style.css">
+    <link rel="stylesheet" href="~/css/site.css" />
+    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/4.7.0/css/font-awesome.min.css">
+    <link rel="apple-touch-icon" sizes="57x57" href="touch-icon-iphone.png" />
+    <link rel="apple-touch-icon" sizes="114x114" href="touch-icon-ipad.png" />
+
+    <!--[if lt IE 9]>
+        <script src="//html5shiv.googlecode.com/svn/trunk/html5.js"></script>
+        <script>window.html5 || document.write('<script src="~/js2/vendor/html5shiv.js"><\/script>')</script>
+    <![endif]-->
+</head>
+<body>
+    <!-- START PRELOADER -->
+    <div id="preloader">
+        <div class="loader">
+            <div class="loader-container">
+                <div class="loader-border-top"></div>
+                <div class="loader-border-bottom"></div>
+            </div>
+            <div class="loader-square"></div>
+        </div>
+    </div>
+    <!-- END OF PRELOADER -->
+    <div class="wrapper">
+        <!-- START HEADER TOP SECTION -->
+        <div class="section header-top-section" id="top">
+            <div class="container">
+                <div class="row">
+                    <div class="col-sm-6">
+                        <div class="contact-info">
+                            <p><i class="pe-7s-call"></i> 305-449-3301</p>
+                            <p><i class="pe-7s-mail"></i> office@klasik.com</p>
+                        </div>
+                    </div><!-- END OF /. COL -->
+                    <div class="col-sm-6">
+                        <div class="social-media">
+                            <ul>
+                                <li><a href="#"><i class="fa fa-facebook"></i></a></li>
+                                <li><a href="#"><i class="fa fa-twitter"></i></a></li>
+                                <li><a href="#"><i class="fa fa-google-plus"></i></a></li>
+                                <li><a href="#"><i class="fa fa-dribbble"></i></a></li>
+                                <li><a href="#"><i class="fa fa-linkedin"></i></a></li>
+                                <li><a href="#"><i class="fa fa-behance"></i></a></li>
+                            </ul>
+                        </div>
+                    </div><!-- END OF /. COL -->
+                </div><!-- END OF ROW -->
+            </div><!-- END OF /. CONTAINER -->
+        </div><!-- END OF /. HEADER TOP SECTION -->
+        <!-- START HEADER SECTION -->
+        <div class="header-section">
+            <nav class="navbar">
+                <div class="container">
+                    <!-- Brand and toggle get grouped for better mobile display -->
+                    <div class="navbar-header">
+                        <button type="button" class="navbar-toggle collapsed" data-toggle="collapse" data-target="#bs-example-navbar-collapse-1" aria-expanded="false">
+                            <span class="sr-only">Toggle navigation</span>
+                            <span class="icon-bar"></span>
+                            <span class="icon-bar"></span>
+                            <span class="icon-bar"></span>
+                        </button>
+                        <a class="navbar-brand" href="index.html">
+                            <img src="images2/logo.png" class="img-responsive" height="50" alt="">
+                        </a>
+                    </div>
+
+                    <!-- Collect the nav links, forms, and other content for toggling -->
+                    <div class="collapse navbar-collapse" id="bs-example-navbar-collapse-1">
+                        <ul class="nav navbar-nav navbar-right">
+                            <li class="active"><a href="#">HOME</a></li>
+                            <li><a href="#about">ABOUT</a></li>
+                            <li><a href="#service">SERVICE</a></li>
+                            <li><a href="#portfolio">PORTFOLIO</a></li>
+                            <li><a href="#testimonials">TESTIMONIAL</a></li>
+                            <li><a href="#pricing">PRICING</a></li>
+                            <li>
+                                <a href="#blog">BLOG</a>
+                                <ul>
+                                    <li><a href="blog-fullwidth.html">Fullwidth</a></li>
+                                    <li><a href="blog-left-sidebar.html">Left sidebar</a></li>
+                                    <li><a href="blog-right-sidebar.html">Right sidebar</a></li>
+                                    <li><a href="post-fullwidth.html">Post fullwidth</a></li>
+                                    <li><a href="post-left-sidebar.html">Post left sidebar</a></li>
+                                    <li><a href="post-right-sidebar.html">Post right sidebar</a></li>
+                                </ul>
+                            </li>
+                            <li><a href="#contact">CONTACT</a></li>
+                        </ul>
+                    </div><!-- /.navbar-collapse -->
+                </div><!-- /.container-fluid -->
+            </nav><!-- END OF /. NAVBAR -->
+        </div><!-- END OF /. HEADER TOP SECTION -->
+
+
+
+        <div class="alert alert-info show" id="connection-status"></div>
+        <div class="row">
+            @*<div class="col-md-4">*@
+            @RenderBody()
+            @*</div>*@
+        </div>
+        <div class="center">
+            <button class="btn btn-primary" onclick="pageEvents.loadMoreBlogPosts();">ver mais</button>
+            <br /><br />
+        </div>
+        <!-- START FOOTER SECTION -->
+        <div class="footer-section">
+            <div class="container">
+                <div class="row">
+                    <div class="col-md-12">
+                        <p>
+                            Copyright &copy;
+                            <script>document.write(new Date().getFullYear());</script> Designed & Develop by : <a href="https://revolthemes.net/">Revolthemes</a>. All Rights Reserved.
+                        </p>
+                        <a href="#top" class="top-button"></a>
+                    </div><!-- END OF /. COLUMN -->
+                </div><!-- END OF /. ROW -->
+            </div><!-- END OF /. CONTAINER -->
+        </div><!-- END OF/. FOOTER SECTION -->
+
+    </div><!-- END OF /. WRAPPER -->
+    <!-- JQUERY LIBERY -->
+    <script src="~/js2/vendor/jquery-1.11.2.min.js"></script>
+    <!-- BOOTSTRAP -->
+    <script src="~/js2/vendor/bootstrap.min.js"></script>
+    <!-- APPEAR JS  -->
+    <script src="~/js2/jquery.appear.js"></script>
+    <!-- WAYPOINTS -->
+    <script src="~/js2/waypoints.min.js"></script>
+    <!-- CUSTOM JS -->
+    <script src="~/js2/jquery.counterup.min.js"></script>
+    <!-- ISOTOPE -->
+    <script src="~/js2/isotope.pkgd.min.js"></script>
+    <!-- PRETTY PHOTO -->
+    <script src="~/js2/jquery.prettyPhoto.js"></script>
+    <!-- OWL CAROSEL -->
+    <script src="~/js2/owl.carousel.min.js"></script>
+    <!-- WOW JS -->
+    <script src="~/js2/wow.min.js"></script>
+    <!-- CUSTOM JS -->
+    <script src="~/js2/custom.js"></script>
+
+    <!--<script src="~/lib/jquery/dist/jquery.js"></script>-->
+    <!--<script src="~/lib/bootstrap/dist/js/bootstrap.min.js"></script>-->
+    <script src="~/lib/es6-promise/es6-promise.js"></script>
+    <script src="~/lib/fetch/fetch.js"></script>
+    <script src="~/lib/systemjs/system.js"></script>
+    <script src="~/lib/localforage/localforage.min.js"></script>
+    <script src="~/lib/localforage/localforage-getitems.js"></script>
+    <script src="~/lib/localforage/localforage-setitems.js"></script>
+    <script src="~/js/site.js"></script>
+
+    <script src="~/js/disablescroll.js"></script>
+
+
+    @RenderSection("Scripts", required: false)
+
+</body>
+</html>
+
