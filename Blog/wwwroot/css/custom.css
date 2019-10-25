@@ -1,5 +1,5 @@
 #postTitle {
-    background: #dd0707;
+    /* background: #dd0707; */
     clear: none;
     width: 379px;
     height: 42px;
@@ -16,9 +16,18 @@
 .favorito {
     background: none;
     border: none;
-    float: right;
+    float: right;    
+    z-index: 9999;
+    position: absolute;
+    right: 22px;
+    top: 7px;
 }
 
     .favorito.adicionado {
         color: orange;
     }
+
+.botaoCustom {
+    color:white;
+    background-color: #46bfa9;    
+}

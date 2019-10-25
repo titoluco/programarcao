@@ -11,6 +11,7 @@ using Microsoft.AspNetCore.Mvc;
 using Microsoft.Extensions.Configuration;
 using Microsoft.Extensions.DependencyInjection;
 using Blog.Services;
+using Microsoft.AspNetCore.Rewrite;
 
 namespace Blog
 {
@@ -65,6 +66,11 @@ namespace Blog
                     name: "default",
                     template: "{controller=Home}/{action=Index}/{id?}");
             });
+            //app.UseMvc();
+
+            var option = new RewriteOptions();
+            option.AddRedirect("^$", "Home/Index");
+            app.UseRewriter(option);
         }
     }
 }

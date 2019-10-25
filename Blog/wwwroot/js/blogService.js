@@ -60,7 +60,8 @@
                         if (posts.length > 0) {
                             template.appendBlogList(posts);
                         } else {
-                            $('#connection-status').html("Sem favoritos");
+                            //$('#connection-status').html("Sem favoritos");
+                            mostraDialogo('Não há favoritos para exibir', 'info', 5000);
                         }
                     }).catch(function (e) {
                         $('#connection-status').html(e);
@@ -100,13 +101,15 @@
                 var css = $(objId).attr("class").replace('fa fa-star ', '');
                 if (css === "favorito") {
                     $(objId).addClass("adicionado");
-                    $("#bodyModal").html("<p>add favorito</p>");
-                    $("#modalAlert").modal("show");
+                    //$("#bodyModal").html("<p>add favorito</p>");                    
+                    //$("#modalAlert").modal("show");
+                    mostraDialogo('Post adicionado aos favoritos', 'success', 5000);
                 }
                 else {
                     $(objId).removeClass("adicionado");
-                    $("#bodyModal").html("<p>remove favorito</p>");
-                    $("#modalAlert").modal("show");
+                    //$("#bodyModal").html("<p>remove favorito</p>");
+                    //$("#modalAlert").modal("show");
+                    mostraDialogo('Post removido aos favoritos', 'warning', 5000);
                 }
                 
 

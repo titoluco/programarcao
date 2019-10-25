@@ -1,6 +1,6 @@
 "use strict";
 
-var cacheName = 'v2Cache';
+var cacheName = 'v1Cache';
 var blogCacheFiles = [
     '/',
     //arquivos basicos da pwa

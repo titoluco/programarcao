@@ -1,11 +1,11 @@
 ﻿<!doctype html>
-<html lang="en">
+<html lang="pt-br">
 <head>
 
     <meta charset="utf-8" />
     <meta name="viewport" content="width=device-width, initial-scale=1.0" />
     <meta name="description" content="study and post, a learning philosophy">
-    <meta name="theme-color" content="#db5945">
+    <meta name="theme-color" content="#46bfa9">
     <link rel="manifest" href="/manifest.json">
     <title>Programarcao</title>
 
@@ -55,10 +55,10 @@
                     <div class="col-sm-6">
                         <div class="social-media">
                             <ul>
-                                <li><a href="https://www.facebook.com/marcos.alberto.7771"><i class="fa fa-facebook"></i></a></li>
-                                <li><a href="https://twitter.com/Titoluco"><i class="fa fa-twitter"></i></a></li>
-                                <li><a href="https://www.linkedin.com/in/marcos-alberto-49a642a3"><i class="fa fa-linkedin"></i></a></li>
-                                <li><a href="https://www.instagram.com/m_alsilva"><i class="fa fa-instagram"></i></a></li>
+                                <li><a target="_blank" href="https://www.facebook.com/marcos.alberto.7771"><i class="fa fa-facebook"></i></a></li>
+                                <li><a target="_blank" href="https://twitter.com/Titoluco"><i class="fa fa-twitter"></i></a></li>
+                                <li><a target="_blank" href="https://www.linkedin.com/in/marcos-alberto-49a642a3"><i class="fa fa-linkedin"></i></a></li>
+                                <li><a target="_blank" href="https://www.instagram.com/m_alsilva"><i class="fa fa-instagram"></i></a></li>
                             </ul>
                         </div>
                     </div><!-- END OF /. COL -->
@@ -77,16 +77,17 @@
                             <span class="icon-bar"></span>
                             <span class="icon-bar"></span>
                         </button>
-                        <a class="navbar-brand" href="index.html">
+                        @*<a class="navbar-brand" href="Home/index">*@
                             <img src="images2/logo.png" class="img-responsive" height="50" alt="">
-                        </a>
+                        @*</a>*@
                     </div>
 
                     <!-- Collect the nav links, forms, and other content for toggling -->
                     <div class="collapse navbar-collapse" id="bs-example-navbar-collapse-1">
-                        <ul class="nav navbar-nav navbar-right">
-                            <li class="active"><a href="#">HOME</a></li>
-                            <li><a href="Home/Favourite">FAVORITOS</a></li>
+                        <ul class="nav navbar-nav navbar-right">                            
+                            <li><a class="active" asp-area="" asp-controller="Home" asp-action="Index">HOME</a></li>
+                            <li><a asp-area="" asp-controller="Home" asp-action="Favourite">FAVORITOS</a></li>
+
                         </ul>
                     </div><!-- /.navbar-collapse -->
                 </div><!-- /.container-fluid -->
@@ -97,14 +98,14 @@
 
         <div class="alert alert-info show" id="connection-status"></div>
         <div class="row">
-            @*<div class="col-md-4">*@
+            <div class="col-md-12">
             @RenderBody()
-            @*</div>*@
+            </div>
         </div>
         @*<div class="center">
-            <button class="btn btn-primary" onclick="pageEvents.loadMoreBlogPosts();">ver mais</button>
-            <br /><br />
-        </div>*@
+                <button class="btn btn-primary" onclick="pageEvents.loadMoreBlogPosts();">ver mais</button>
+                <br /><br />
+            </div>*@
 
         <!-- START FOOTER SECTION -->
         <div class="footer-section">
@@ -154,6 +155,7 @@
     <script src="~/js/site.js"></script>
 
     <script src="~/js/disablescroll.js"></script>
+    <script src="~/js/notification.js"></script>
 
 
     @RenderSection("Scripts", required: false)
