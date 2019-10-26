@@ -50,6 +50,12 @@ a img {
     height:100%;
 }
 
+h3 .tituloBlog {
+    /* mexer aqui para arrumar o texto. limpar a formatação dos outros h3*/
+    padding:0px;
+    margin:0px;
+}
+
 
 @media (max-width: 1500px) {
 }
