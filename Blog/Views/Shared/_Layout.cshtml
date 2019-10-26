@@ -78,13 +78,13 @@
                             <span class="icon-bar"></span>
                         </button>
                         @*<a class="navbar-brand" href="Home/index">*@
-                            <img src="images2/logo.png" class="img-responsive" height="50" alt="">
+                        <img src="images2/logo.png" class="img-responsive" height="50" alt="">
                         @*</a>*@
                     </div>
 
                     <!-- Collect the nav links, forms, and other content for toggling -->
                     <div class="collapse navbar-collapse" id="bs-example-navbar-collapse-1">
-                        <ul class="nav navbar-nav navbar-right">                            
+                        <ul class="nav navbar-nav navbar-right">
                             <li><a class="active" asp-area="" asp-controller="Home" asp-action="Index">HOME</a></li>
                             <li><a asp-area="" asp-controller="Home" asp-action="Favourite">FAVORITOS</a></li>
 
@@ -99,13 +99,13 @@
         <div class="alert alert-info show" id="connection-status"></div>
         <div class="row">
             <div class="col-md-12">
-            @RenderBody()
+                @RenderBody()
             </div>
         </div>
-        @*<div class="center">
-                <button class="btn btn-primary" onclick="pageEvents.loadMoreBlogPosts();">ver mais</button>
-                <br /><br />
-            </div>*@
+        <div class="center" style="text-align:center">
+            <button class="botaoCustom btn" onclick="pageEvents.loadMoreBlogPosts();">ver mais</button>
+            <br /><br />
+        </div>
 
         <!-- START FOOTER SECTION -->
         <div class="footer-section">

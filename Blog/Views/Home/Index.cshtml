@@ -54,16 +54,18 @@
         <div class="card wow fadeInDown animated col-md-4" data-wow-delay="0.2s">
             <a id="LinkFavorito" onclick="pageEvents.addFavourite('{{PostId}}');"><i id="fav{{PostId}}" class="fa fa-star {{favorito}}"></i></a>
             <div class="blog-item">
-                <a onclick="pageEvents.loadBlogPost('{{Link}}');" width="100%">
-                    <img src="/images2/blog/{{PostId}}.png" width="350" height="230" alt="">
-                </a>
+                <div class="blog-image">
+                    <a onclick="pageEvents.loadBlogPost('{{Link}}');" width="100%">
+                        <img src="/images2/blog/{{PostId}}.png" alt="">
+                    </a>
+                </div>
                 <div class="blog-caption">
                     <div class="title">
                         <div class="meta">
                             <i class="pe-7s-pin"></i>
                         </div>
                         <div id="postTitle">
-                            <h3>{{PostId}} - {{Title}}</h3>
+                            <h3 class="tituloBlog">{{PostId}} - {{Title}}</h3>
                         </div>
                     </div>
                     <div class="caption">
@@ -90,10 +92,6 @@
         <a href="#blog-title" class="btn btn-primary" onclick="pageEvents.ExitBlogPost()">voltar</a>
 
     </script>
-</div>
-<div class="center" style="text-align:center">
-    <button class="botaoCustom btn" onclick="pageEvents.loadMoreBlogPosts();">ver mais</button>
-    <br /><br />
 </div>
 
 <script id="blog-content-not-found" type="text/template">

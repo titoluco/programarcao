@@ -31,3 +31,48 @@
     color:white;
     background-color: #46bfa9;    
 }
+
+h3.tituloBlog {
+    margin: 0px;
+    padding: 0px;
+    top: 25%;
+}
+
+.blog-image {
+    /*max-width:419px; 
+    max-height:220px; 
+    min-width:419px; 
+    min-height:220px;*/
+}
+
+a img {
+    width: 100%;
+    height:100%;
+}
+
+
+@media (max-width: 1500px) {
+}
+
+@media (max-width: 1400px) {
+
+}
+
+@media (max-width: 1300px) {
+
+}
+
+@media (max-width: 1200px) {
+
+}
+
+@media (max-width: 992px) {
+  
+}
+
+@media (max-width: 768px) {
+  
+}
+
+@media (max-width: 420px) {
+}

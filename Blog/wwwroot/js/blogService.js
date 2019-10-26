@@ -86,7 +86,8 @@
                         } else {
                             var converter = new showdown.Converter();
                             html = converter.makeHtml(data);
-                            template.showBlogItem(html, link);
+                            $("#modalAlert").modal("show");
+                            //template.showBlogItem(html, link);
                         }
                         window.location = '#' + link;
                     })

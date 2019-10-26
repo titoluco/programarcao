@@ -39,7 +39,7 @@
         var template = $('#blog-item').html();
         template = template.replace('{{Link}}', link);
         template = template.replace('{{Content}}', html);
-        $('#blog-item-container').html(template);
+        //$('#blog-item-container').html(template);
     }
 
     function hidenBlogItem() {        
