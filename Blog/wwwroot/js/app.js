@@ -1,6 +1,27 @@
 ﻿var blogService = require('./blogService.js');
 var serviceWorker = require('./swRegister.js');
 
+var isMobile = {
+    Android: function () {
+        return navigator.userAgent.match(/Android/i);
+    },
+    BlackBerry: function () {
+        return navigator.userAgent.match(/BlackBerry/i);
+    },
+    iOS: function () {
+        return navigator.userAgent.match(/iPhone|iPad|iPod/i);
+    },
+    Opera: function () {
+        return navigator.userAgent.match(/Opera Mini/i);
+    },
+    Windows: function () {
+        return navigator.userAgent.match(/IEMobile/i) || navigator.userAgent.match(/WPDesktop/i);
+    },
+    any: function () {
+        return (isMobile.Android() || isMobile.BlackBerry() || isMobile.iOS() || isMobile.Opera() || isMobile.Windows());
+    }
+};
+
 //window events
 let defferedPrompt;
 window.addEventListener('beforeinstallprompt', (e) => {
@@ -75,7 +96,13 @@ window.pageEvents = {
 };
 
 if ($("#blog-title").html()) {
-    $('#verMais').hide();
+    if (isMobile.any()) {
+        $('#verMais').show();
+    }
+    else {
+        $('#verMais').hide();
+    }
+    
     //$('#menuHome').addClass('menuAtivo');
     //$('#menuFavorito').addClass('menuInativo');
     $('#menuHome').css("color", '#46bfa9');
@@ -94,6 +121,10 @@ $(document).ready(function () {
 });
 
 $(window).scroll(function () {
+
+    if (isMobile.any()) {
+        return;
+    }
     var calc = parseFloat($(document).height() - $(window).height());
     var scrollTop = parseFloat($(window).scrollTop());
     var dif = scrollTop / calc;
@@ -112,7 +143,7 @@ $(window).scroll(function () {
     //console.log(scrollTop + ' ===  ' + $(document).height() + ' - ' + $(window).height() + '(' + calc + ' | dif ' + dif + ')');
     // blogService.loadMoreBlogPosts();
     //if (scrollTop === calc) {
-    alert(dif);
+    //alert(dif);
     if (dif >= 0.96) {
         if (executado === 'n' && dif > ultimoscroll) {
             localStorage.setItem('executado', JSON.stringify('s'));
@@ -126,13 +157,6 @@ $(window).scroll(function () {
     localStorage.setItem('ultimoscroll', JSON.stringify(dif));
 });
 
-//$(window).scroll(function () {
-//   // this.alert("aaaa");
-//    if ($(window).scrollTop() + $(window).height() > $(document).height() - 100) {
-//        $(window).disablescroll();
-//        //blogService.loadMoreBlogPosts();
-//        this.alert("aaaa");
-//        //$(window).disablescroll("undo");
-//    }
-//});
+
+
 

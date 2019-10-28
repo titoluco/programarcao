@@ -1,7 +1,7 @@
 "use strict";
 importScripts('lib/localforage/localforage.min.js');
 
-var cacheName = 'v42Cache';
+var cacheName = 'ver1Cache';
 
 
 var blogCacheFiles = [
@@ -36,7 +36,21 @@ var blogCacheFiles = [
     '/images/icons/icon-152x152.png',
     '/images/icons/icon-192x192.png',
     '/images/icons/icon-384x384.png',
-    '/images/icons/icon-512x512.png'
+    '/images/icons/icon-512x512.png',
+
+    '/css2/animate.min.css',
+    '/css2/bootstrap.css',
+    '/css2/font-awesome.css',
+    '/css2/owl.carousel.css',
+    '/css2/pe-icon-7-stroke.css',
+    '/css2/prettyPhoto.css',
+    '/css2/style.css',
+
+    '/js2/vendor/bootstrap.js',
+    '/js2/vendor/bootstrap.min.js',
+    '/js2/vendor/html5shiv.js',
+    '/js2/vendor/jquery-1.11.2.min.js',
+    '/js2/vendor/npm.js'
 ];
 /*
 
