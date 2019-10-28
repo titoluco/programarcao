@@ -1,8 +1,8 @@
-{
-  "name": "Maki Blog",
-  "short_name": "MakiBlog",
-  "theme_color": "#2196f3",
-  "background_color": "#2196f3",
+﻿{
+  "name": "Programarcao",
+  "short_name": "Programarcao",
+  "theme_color": "#46bfa9",
+  "background_color": "#656565",
   "display": "fullscreen",
   "Scope": "/",
   "start_url": "/",

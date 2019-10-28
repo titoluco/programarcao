@@ -40,26 +40,94 @@ window.pageEvents = {
             }
             defferedPrompt = null;
         });
+    },
+    setBackgroundFetch: function (link) {
+        navigator.serviceWorker.ready.then(async (swReg) => {
+            const bgFetch = await swReg.backgroundFetch.fetch(link,
+                ['/Home/Post/?link=' + link], {
+                title: link,
+                icons: [{
+                    sizes: '192x192',
+                    src: '/images/icons/icon-192x192.png',
+                    type: 'image/png',
+                }],
+                downloadTotal: 15000,
+            });
+
+            bgFetch.addEventListener('progress', () => {
+                if (!bgFetch.downloadTotal) return;
+
+                const percent = Math.round(bgFetch.downloaded / bgFetch.downloadTotal * 100);
+                console.log('Download progress: ' + percent + '%');
+                console.log('Download status: ' + bgFetch.result);
+
+                $('.download-start').hide();
+                $('#status-download').show();
+                $('#status-download > .progress > .progress-bar').css('width', percent + '%');
+
+                if (bgFetch.result === 'success') {
+
+                    $('#status-download > .text-success').show();
+                }
+            });
+        });
     }
 };
 
 if ($("#blog-title").html()) {
+    $('#verMais').hide();
+    //$('#menuHome').addClass('menuAtivo');
+    //$('#menuFavorito').addClass('menuInativo');
+    $('#menuHome').css("color", '#46bfa9');
     blogService.loadLatestBlogPosts();
 }
 else {
+    $('#verMais').hide();
+    //$('#menuHome').addClass('menuInativo');
+    //$('#menuFavorito').addClass('menuAtivo');
+    $('#menuFavorito').css("color", '#46bfa9');
     blogService.loadFavouritePost();
 }
 
-//$(window).scroll(function () {7
-//   // blogService.loadMoreBlogPosts();
-//    if ($(window).scrollTop() >= $(document).height() - $(window).height() -100) {
-//        debugger;
-//        // ajax call get data from server and append to the div
-//        blogService.loadMoreBlogPosts();
-//    }
-//});
+$(document).ready(function () {
+    $(this).scrollTop(0);
+});
+
+$(window).scroll(function () {
+    var calc = parseFloat($(document).height() - $(window).height());
+    var scrollTop = parseFloat($(window).scrollTop());
+    var dif = scrollTop / calc;
+    var ultimoscroll = JSON.parse(localStorage.getItem('ultimoscroll'));
+    var executado = JSON.parse(localStorage.getItem('executado'));
+
+    if (!executado) {
+        executado = 'n';
+    }
+
+    if (!ultimoscroll) {
+        ultimoscroll = dif;
+    }
+
+
+    //console.log(scrollTop + ' ===  ' + $(document).height() + ' - ' + $(window).height() + '(' + calc + ' | dif ' + dif + ')');
+    // blogService.loadMoreBlogPosts();
+    //if (scrollTop === calc) {
+    alert(dif);
+    if (dif >= 0.96) {
+        if (executado === 'n' && dif > ultimoscroll) {
+            localStorage.setItem('executado', JSON.stringify('s'));
+            //this.alert("aaaa");
+            blogService.loadMoreBlogPosts();
+        }
+        else {
+            localStorage.setItem('executado', JSON.stringify('n'));
+        }
+    }
+    localStorage.setItem('ultimoscroll', JSON.stringify(dif));
+});
 
 //$(window).scroll(function () {
+//   // this.alert("aaaa");
 //    if ($(window).scrollTop() + $(window).height() > $(document).height() - 100) {
 //        $(window).disablescroll();
 //        //blogService.loadMoreBlogPosts();

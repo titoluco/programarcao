@@ -16,9 +16,9 @@
 @*<div class="col-md-4">*@
 <div class="">
 
-    <div id="blog-item-container"></div>
+    @*<div id="blog-item-container"></div>*@
 
-    <div id="modalAlert" class="modal" tabindex="-1" role="dialog">
+    @*<div id="modalAlert" class="modal" tabindex="-1" role="dialog">
         <div class="modal-dialog" role="document">
             <div class="modal-content">
                 <div class="modal-header">
@@ -34,7 +34,7 @@
                 </div>
             </div>
         </div>
-    </div>
+    </div>*@
 
     <script id="blog-card" type="text/template">
 
@@ -52,7 +52,7 @@
         @*<div class="col-md-4">*@
 
         <div class="card wow fadeInDown animated col-md-4" data-wow-delay="0.2s">
-            <a id="LinkFavorito" onclick="pageEvents.addFavourite('{{PostId}}');"><i id="fav{{PostId}}" class="fa fa-star {{favorito}}"></i></a>
+            <a id="LinkFavorito" onclick="pageEvents.addFavourite('{{PostId}}');"><i id="fav{{PostId}}" class="fa fa-star favorito"></i></a>
             <div class="blog-item">
                 <a onclick="pageEvents.loadBlogPost('{{Link}}');">
                     <img src="/images2/blog/{{PostId}}.png" width="350" height="230" alt="">
@@ -83,16 +83,16 @@
         </div>
         @*</div>*@
     </script>
-    <script id="blog-item" type="text/template">
+    @*<script id="blog-item" type="text/template">
         <div id="{{Link}}" class="blog-item">
             {{Content}}
         </div>
         <a href="#blog-title" class="btn btn-primary" onclick="pageEvents.ExitBlogPost()">voltar</a>
 
-    </script>
+    </script>*@
 </div>
 
-<script id="blog-content-not-found" type="text/template">
+@*<script id="blog-content-not-found" type="text/template">
     <h1>
         Ups, artigo não está no Cache!
     </h1>
@@ -102,7 +102,7 @@
     </div>
     <br />
     <button class="btn btn-success">Sim!</button>
-</script>
+</script>*@
 <script type="text/template">
     window.onload = function () {
     pageEvents.loadMoreBlogPosts();

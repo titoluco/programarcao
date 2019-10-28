@@ -20,6 +20,7 @@
     <!-- STYLE -->
     <link rel="stylesheet" href="~/css2/style.css">
     <link rel="stylesheet" href="~/css/site.css" />
+    <link rel="stylesheet" href="~/css/custom.css" />
     <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/4.7.0/css/font-awesome.min.css">
     <link rel="apple-touch-icon" sizes="57x57" href="touch-icon-iphone.png" />
     <link rel="apple-touch-icon" sizes="114x114" href="touch-icon-ipad.png" />
@@ -30,6 +31,8 @@
     <![endif]-->
 </head>
 <body>
+    <div id="blog-item-container"></div>
+
     <!-- START PRELOADER -->
     <div id="preloader">
         <div class="loader">
@@ -77,17 +80,17 @@
                             <span class="icon-bar"></span>
                             <span class="icon-bar"></span>
                         </button>
-                        @*<a class="navbar-brand" href="Home/index">*@
-                        <img src="images2/logo.png" class="img-responsive" height="50" alt="">
-                        @*</a>*@
+                        <div class="divLogo">
+                            <a asp-area="" asp-controller="Home" asp-action="Index">
+                                <img src="/images2/logo.png" class="img-responsive" height="50" alt="">
+                            </a>
+                        </div>
                     </div>
-
                     <!-- Collect the nav links, forms, and other content for toggling -->
                     <div class="collapse navbar-collapse" id="bs-example-navbar-collapse-1">
                         <ul class="nav navbar-nav navbar-right">
-                            <li><a class="active" asp-area="" asp-controller="Home" asp-action="Index">HOME</a></li>
-                            <li><a asp-area="" asp-controller="Home" asp-action="Favourite">FAVORITOS</a></li>
-
+                            <li><a id="menuHome" asp-area="" asp-controller="Home" asp-action="Index">HOME</a></li>
+                            <li><a id="menuFavorito" asp-area="" asp-controller="Home" asp-action="Favourite">FAVORITOS</a></li>
                         </ul>
                     </div><!-- /.navbar-collapse -->
                 </div><!-- /.container-fluid -->
@@ -96,14 +99,14 @@
 
 
 
-        <div class="alert alert-info show" id="connection-status"></div>
+        <div id="connection-status"></div>
         <div class="row">
             <div class="col-md-12">
                 @RenderBody()
             </div>
         </div>
         <div class="center" style="text-align:center">
-            <button class="botaoCustom btn" onclick="pageEvents.loadMoreBlogPosts();">ver mais</button>
+            <button id="verMais" class="botaoCustom btn" onclick="pageEvents.loadMoreBlogPosts();">ver mais</button>
             <br /><br />
         </div>
 
@@ -114,15 +117,68 @@
                     <div class="col-md-12">
                         <p>
                             Copyright &copy;
-                            <script>document.write(new Date().getFullYear());</script> Designed & Develop by : <a href="https://revolthemes.net/">Revolthemes</a>. All Rights Reserved.
+                            <script>document.write(new Date().getFullYear());</script> Desenvolvido por <a href="https://programarcao.azurewebsites.net/">Marcão</a>. Todos os direitos reservados.
                         </p>
                         <a href="#top" class="top-button"></a>
                     </div><!-- END OF /. COLUMN -->
                 </div><!-- END OF /. ROW -->
             </div><!-- END OF /. CONTAINER -->
         </div><!-- END OF/. FOOTER SECTION -->
-
     </div><!-- END OF /. WRAPPER -->
+
+    <script id="blog-item" type="text/template">
+        @*<div id="{{Link}}" class="blog-item">
+                    {{Content}}
+                </div>
+                <a href="#blog-title" class="btn btn-primary" onclick="pageEvents.ExitBlogPost()">voltar</a>
+
+            </script>*@
+
+        <div id="modalAlert" class="modal" tabindex="-1" role="dialog">
+            <div class="modal-dialog" role="document">
+                <div class="modal-content">
+                    <div class="modal-header">
+                        <h5 class="modal-title">{{Link}}</h5>
+                        <button type="button" class="close" data-dismiss="modal" aria-label="Fechar">
+                            <span aria-hidden="true">&times;</span>
+                        </button>
+                    </div>
+                    <div id="bodyModal" class="modal-body">
+                        {{Content}}
+                    </div>
+                    <div class="modal-footer">
+                        <button type="button" class="btn btn-secondary" data-dismiss="modal">OK</button>
+                    </div>
+                </div>
+            </div>
+        </div>
+    </script>
+
+    <script id="blog-content-not-found" type="text/template">
+
+        <div id="modalDialog" class="modal" tabindex="-1" role="dialog">
+            <div class="modal-dialog" role="document">
+                <div class="modal-content">
+                    <div class="modal-header">
+                        <h5 class="modal-title">Ups, artigo não está no Cache!</h5>
+                        <button type="button" class="close" data-dismiss="modal" aria-label="Fechar">
+                            <span aria-hidden="true">&times;</span>
+                        </button>
+                    </div>
+                    <div class="modal-body">
+                        Você quer que a gente continue tentando fazer download do artigo
+                        em plano de fundo e te avise quando estiver disponível?
+                    </div>
+                    <div class="modal-footer">
+                        <button class="btn btn-primary download-start" data-dismiss="modal" onclick="pageEvents.setBackgroundFetch('{{Link}}');">Sim!</button>
+                        <button type="button" class="btn btn-secondary" data-dismiss="modal">Não</button>
+                    </div>
+                </div>
+            </div>
+        </div>
+    </script>
+
+
     <!-- JQUERY LIBERY -->
     <script src="~/js2/vendor/jquery-1.11.2.min.js"></script>
     <!-- BOOTSTRAP -->

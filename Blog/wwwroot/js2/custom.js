@@ -68,7 +68,8 @@ $('document').ready(function() {
         });
 
         // Bind to scroll
-        $(window).scroll(function(){
+        /*$(window).scroll(function () {
+            
             var fromTop = $(this).scrollTop()+topMenuHeight;
             var cur = scrollItems.map(function(){
                 if ($(this).offset().top < fromTop)
@@ -82,7 +83,7 @@ $('document').ready(function() {
                  .parent().removeClass("active")
                  .end().filter("[href=#"+id+"]").parent().addClass("active");
             }
-        });
+        });*/
     })(jQuery);
 
     /*==============================

@@ -50,6 +50,13 @@ a img {
     height:100%;
 }
 
+.menuAtivo {
+    color: #46bfa9;
+}
+.menuInativo {
+    color: #fff;
+}
+
 h3 .tituloBlog {
     /* mexer aqui para arrumar o texto. limpar a formatação dos outros h3*/
     padding:0px;

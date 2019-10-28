@@ -82,7 +82,7 @@ namespace Blog.Controllers
 
         public JsonResult FavouritesBlogPosts()
         {
-            var posts = _blogService.GetFavouritesPosts();
+            var posts = _blogService.GetAllPosts();
             return Json(posts);
         }
 
@@ -96,17 +96,5 @@ namespace Blog.Controllers
             var posts = _blogService.GetOlderPosts(oldestBlogPostId);
             return Json(posts);
         }
-        public JsonResult AlterFavourite(int PostId)
-        {
-            string fav = HttpContext.Session.GetString($"fav{PostId}");
-
-            fav = fav == "favorito" ? "favorito adicionado" : "favorito";
-
-            HttpContext.Session.SetString($"fav{PostId}", fav);
-
-            //var posts = _blogService.GetOlderPosts(PostId);
-            return null; // Json(posts);
-        }
-
     }
 }

@@ -39,8 +39,15 @@
         var template = $('#blog-item').html();
         template = template.replace('{{Link}}', link);
         template = template.replace('{{Content}}', html);
-        //$('#blog-item-container').html(template);
+        $('#blog-item-container').html(template);
     }
+
+    function showBlogItemNotFound(link) {
+        var template = $('#blog-content-not-found').html();
+        template = template.replace('{{Link}}', link);
+        $('#blog-item-container').html(template);
+    }
+
 
     function hidenBlogItem() {        
         var template = $('#blog-item').html();
@@ -50,6 +57,7 @@
     return {
         appendBlogList: appendBlogList,
         showBlogItem: showBlogItem,
-        hidenBlogItem: hidenBlogItem
+        hidenBlogItem: hidenBlogItem,
+        showBlogItemNotFound: showBlogItemNotFound
     };
 });

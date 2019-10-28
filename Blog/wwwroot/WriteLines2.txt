@@ -1,0 +1,4 @@
+C:\Users\Marcos\source\repos\titoluco\programarcao\Blog\wwwroot\favicon.ico
+C:\Users\Marcos\source\repos\titoluco\programarcao\Blog\wwwroot\manifest.json
+C:\Users\Marcos\source\repos\titoluco\programarcao\Blog\wwwroot\sw.js
+C:\Users\Marcos\source\repos\titoluco\programarcao\Blog\wwwroot\WriteLines2.txt

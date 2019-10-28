@@ -6,7 +6,7 @@ namespace Blog.Services
     public interface IBlogService
     {
         List<BlogPost> GetLatestPosts();
-        List<BlogPost> GetFavouritesPosts();
+        List<BlogPost> GetAllPosts();
         string GetPostText(string link);
 
         List<BlogPost> GetOlderPosts(int oldestPostId);

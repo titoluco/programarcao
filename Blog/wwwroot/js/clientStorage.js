@@ -107,7 +107,7 @@
 
     //    });
     //}
-
+    /*
     function getFavouritePosts() {
 
         return new Promise(function (resolve, reject) {
@@ -128,6 +128,40 @@
                 blogInstance.getItems().then(function (results) {
                     var posts = Object.keys(results).map(function (k) { return results[k]; }).reverse();
                     posts = posts.filter(function (x) { return x.favorito === 'favorito adicionado'; });
+                    //oldestBlogPostId = posts.length === 0 ? undefined : String(posts[posts.length - 1].postId);
+                    resolve(posts);
+                });
+            });
+
+        });
+
+    }
+    */
+    function getFavouritePosts() {
+
+        return new Promise(function (resolve, reject) {
+            blogInstance.keys().then(function (keys) {
+
+                keys = keys.filter(function (a) { return a && !a.includes('#'); });
+                keys = keys.sort(function (a, b) { return a - b; });
+
+                var index = keys.indexOf(oldestBlogPostId);
+                if (index === -1) { index = keys.length; }
+                if (index === 0) { resolve([]); return; }
+
+                var start = index - limit;
+                var limitAdjusted = start < 0 ? index : limit;
+
+                keys = keys.splice(Math.max(0, start), limitAdjusted);
+
+                blogInstance.getItems().then(function (results) {
+                    var posts = Object.keys(results).map(function (k) { return results[k]; }).reverse();
+                    var listaFavoritos = JSON.parse(localStorage.getItem('favoritos'));
+
+                    if (!listaFavoritos) {
+                        resolve([]);
+                    }
+                    posts = posts.filter(function (x) { return x.postId ? listaFavoritos.includes(x.postId.toString()) : false; });
                     oldestBlogPostId = posts.length === 0 ? undefined : String(posts[posts.length - 1].postId);
                     resolve(posts);
                 });
