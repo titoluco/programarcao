@@ -1,55 +1,11 @@
-﻿@{
-    ViewData["Title"] = "Home Page";
-}
+﻿<div id="abaIndex" class="text-center">
+    <div class="text-center" id="blog-title">
+    </div>
 
-<div class="text-center" id="blog-title">
-    @*<h1 class="display-4">MBC - Meu Bloguinho Camarada</h1>
-        <p>Subtítulo legal</p>*@
-</div>
-
-@*<div class="alert alert-info show" id="connection-status"></div>*@
-
-@*<div class="blog-list card-columns" id="blog-list">*@
-<div class="bloglist" id="blog-list">
-</div>
-
-@*<div class="col-md-4">*@
-<div class="">
-
-
-    @*<div id="modalAlert" class="modal" tabindex="-1" role="dialog">
-        <div class="modal-dialog" role="document">
-            <div class="modal-content">
-                <div class="modal-header">
-                    <h5 class="modal-title"></h5>
-                    <button type="button" class="close" data-dismiss="modal" aria-label="Fechar">
-                        <span aria-hidden="true">&times;</span>
-                    </button>
-                </div>
-                <div id="bodyModal" class="modal-body">
-                </div>
-                <div class="modal-footer">
-                    <button type="button" class="btn btn-secondary" data-dismiss="modal">OK</button>
-                </div>
-            </div>
-        </div>
-    </div>*@
+    <div class="bloglist" id="blog-list">
+    </div>
 
     <script id="blog-card" type="text/template">
-
-        @*<div class="card">
-                <span>
-                    <a onclick="pageEvents.addFavourite('{{PostId}}');"><i id="fav{{PostId}}" class="fa fa-star {{favorito}}"></i></a>
-                </span>
-                <div class="card-body">
-                    <h5 class="card-title">{{PostId}} - {{Title}}</h5>
-                    <p class="card-text">{{ShortDescription}}</p>
-                    <button onclick="pageEvents.loadBlogPost('{{Link}}');" class="btn btn-primary">ir</button>
-                </div>
-            </div>*@
-
-        @*<div class="col-md-4">*@
-
         <div class="card wow fadeInDown animated col-md-4" data-wow-delay="0.2s">
             <a id="LinkFavorito" onclick="pageEvents.addFavourite('{{PostId}}');"><i id="fav{{PostId}}" class="fa fa-star favorito"></i></a>
             <div class="blog-item">
@@ -82,30 +38,84 @@
                 </div>
             </div>
         </div>
-        @*</div>*@
     </script>
-    @*<script id="blog-item" type="text/template">
+</div>
+<div id="artigo">
+    <div id="blog-item-container"></div>
+    <script id="blog-item" type="text/template">
         <div id="{{Link}}" class="blog-item">
             {{Content}}
         </div>
-        <a href="#blog-title" class="btn btn-primary" onclick="pageEvents.ExitBlogPost()">voltar</a>
-
-    </script>*@
+        <a onclick="pageEvents.VoltarPosts();" class="btn btn-primary">voltar</a>
+    </script>
 </div>
 
-@*<script id="blog-content-not-found" type="text/template">
-    <h1>
-        Ups, artigo não está no Cache!
-    </h1>
-    <div>
-        Você quer que a gente continue tentando fazer download do artigo
-        em plano de fundo e te avise quando estiver disponível?
-    </div>
-    <br />
-    <button class="btn btn-success">Sim!</button>
-</script>*@
-<script type="text/template">
-    window.onload = function () {
-    pageEvents.loadMoreBlogPosts();
-    }
-</script>
+<div id="artigoNaoEncontrado">
+    <script id="blog-content-not-found" type="text/template">
+        <div id="modalDialog" class="modal" tabindex="-1" role="dialog">
+            <div class="modal-dialog" role="document">
+                <div class="modal-content">
+                    <div class="modal-header">
+                        <h5 class="modal-title">Ups, artigo não está no Cache!</h5>
+                        <button type="button" class="close" data-dismiss="modal" aria-label="Fechar">
+                            <span aria-hidden="true">&times;</span>
+                        </button>
+                    </div>
+                    <div class="modal-body">
+                        Você quer que a gente continue tentando fazer download do artigo
+                        em plano de fundo e te avise quando estiver disponível?
+                    </div>
+                    <div class="modal-footer">
+                        <button class="btn btn-primary download-start" data-dismiss="modal" onclick="pageEvents.setBackgroundFetch('{{Link}}');">Sim!</button>
+                        <button type="button" class="btn btn-secondary" data-dismiss="modal">Não</button>
+                    </div>
+                </div>
+            </div>
+        </div>
+    </script>
+</div>
+
+<div class="text-center" id="abaFavorito">
+
+    @*<div class="bloglist" id="blog-list">
+        </div>*@
+
+    @*<script id="blog-card" type="text/template">
+            <div class="card wow fadeInDown animated col-md-4" data-wow-delay="0.2s">
+                <a id="LinkFavorito" onclick="pageEvents.addFavourite('{{PostId}}');"><i id="fav{{PostId}}" class="fa fa-star favorito"></i></a>
+                <div class="blog-item">
+                    <a onclick="pageEvents.loadBlogPost('{{Link}}');">
+                        <img src="/images2/blog/{{PostId}}.png" width="350" height="230" alt="">
+                    </a>
+                    <div class="blog-caption">
+                        <div class="title">
+                            <div class="meta">
+                                <i class="pe-7s-pin"></i>
+                            </div>
+                            <div id="postTitle">
+                                <h3>{{PostId}} - {{Title}}</h3>
+                            </div>
+                        </div>
+                        <div class="caption">
+                            <div class="date-meta">
+                                <div class="date-box">
+                                    <i class="pe-7s-note2"></i>
+                                </div>
+                                <div class="date-box">
+                                    <p>JAN</p>
+                                    <span>05</span>
+                                </div>
+                            </div>
+                            <p>{{ShortDescription}}</p>
+                        </div>
+                    </div>
+                </div>
+            </div>
+        </script>*@
+</div>
+
+@*<script type="text/template">
+        window.onload = function () {
+        pageEvents.loadMoreBlogPosts();
+        }
+    </script>*@

@@ -57,6 +57,7 @@
                     .then(function (posts) {
                         template.appendBlogList(posts);
                         marcarFavoritos(posts);
+                        controleExibicao('Index');
                     });
             });
     }
@@ -100,18 +101,15 @@
                 clientStorage.getPostText(link)
                     .then(function (data) {
                         if (!data) {
-                            //template.showBlogItem($('#blog-content-not-found').html(), link);
-                            //mostraDialogo(status, 'success', 5000);
-                            //var contentNotFound = $('#blog-content-not-found').html().replace(/{{Link}}/g, link);
-                            //template.showBlogItemNotFound(link);
                             template.showBlogItemNotFound(link);
-                            $("#modalDialog").modal("show");
+                            //$("#modalDialog").modal("show");
+                            controleExibicao('Indisponivel');
                         } else {
                             var converter = new showdown.Converter();
                             html = converter.makeHtml(data);
-                            template.showBlogItem(html, link);
-                            //$("#bodyModal").html("{{Content}}");    
-                            $("#modalAlert").modal("show");
+                            template.showBlogItem(html, link);                            
+                            //$("#modalAlert").modal("show");
+                            controleExibicao('Artigo');
                         }
                         //window.location = '#' + link;
                     }).catch(function (e) {
@@ -120,30 +118,30 @@
             });
     }
 
-    function loadBlogPost2(link) {
+    //function loadBlogPost2(link) {
 
-        fetchPromise(blogPostUrl, link, true)
-            .then(function (status) {
-                //$('#connection-status').html(status);
-                $('#connection-status').removeClass('alert alert-info show');
-                mostraDialogo(status, 'success', 5000);
+    //    fetchPromise(blogPostUrl, link, true)
+    //        .then(function (status) {
+    //            //$('#connection-status').html(status);
+    //            $('#connection-status').removeClass('alert alert-info show');
+    //            mostraDialogo(status, 'success', 5000);
 
-                clientStorage.getPostText(link)
-                    .then(function (data) {
-                        if (!data) {
-                            var contentNotFound = $('#blog-content-not-found').html().replace(/{{Link}}/g, link);
-                            template.showBlogItem(contentNotFound, link);
-                            $("#modalDialog").modal("show");
-                        } else {
-                            var converter = new showdown.Converter();
-                            html = converter.makeHtml(data);
-                            template.showBlogItem(html, link);
-                            $("#modalAlert").modal("show");
-                        }
-                        //window.location = '#' + link;
-                    });
-            });
-    }
+    //            clientStorage.getPostText(link)
+    //                .then(function (data) {
+    //                    if (!data) {
+    //                        var contentNotFound = $('#blog-content-not-found').html().replace(/{{Link}}/g, link);
+    //                        template.showBlogItem(contentNotFound, link);
+    //                        $("#modalDialog").modal("show");
+    //                    } else {
+    //                        var converter = new showdown.Converter();
+    //                        html = converter.makeHtml(data);
+    //                        template.showBlogItem(html, link);
+    //                        $("#modalAlert").modal("show");
+    //                    }
+    //                    //window.location = '#' + link;
+    //                });
+    //        });
+    //}
 
     function addFavourite(id) {
 
@@ -169,38 +167,7 @@
                     mostraDialogo('Post adicionado aos favoritos', 'success', 5000);
                 }
 
-                localStorage.setItem('favoritos', JSON.stringify(listaFavoritos));
-               // console.log(listaFavoritos);
-
-
-                //if (css === "favorito") {
-                //    $(objId).addClass("adicionado");
-                //    localStorage.setItem(objId, 'favorito');
-                //    //$("#bodyModal").html("<p>add favorito</p>");                    
-                //    //$("#modalAlert").modal("show");
-                //    mostraDialogo('Post adicionado aos favoritos', 'success', 5000);
-
-                //}
-                //else {
-                //    $(objId).removeClass("adicionado");
-                //    //$("#bodyModal").html("<p>remove favorito</p>");
-                //    //$("#modalAlert").modal("show");
-                //    localStorage.removeItem(objId);
-                //    mostraDialogo('Post removido aos favoritos', 'warning', 5000);
-                //}
-
-
-                //clientStorage.getPostText(link)
-                //    .then(function (data) {
-                //        if (!data) {
-                //            template.showBlogItem($('#blog-content-not-found').html(), link);
-                //        } else {
-                //            var converter = new showdown.Converter();
-                //            html = converter.makeHtml(data);
-                //            template.showBlogItem(html, link);
-                //        }
-                //        window.location = '#' + link;
-                //    })
+                localStorage.setItem('favoritos', JSON.stringify(listaFavoritos));               
             });
     }
 
@@ -233,12 +200,34 @@
         //console.log(listaFavoritos);
     }
 
+    function controleExibicao(item) {
+        $('#abaIndex').hide();
+        $('#abaFavorito').hide();
+        $('#artigo').hide();
+        $('#artigoNaoEncontrado').hide();
+
+        switch (item) {
+            case 'Favorito':
+                $('#abaFavorito').show();
+                break;
+            case 'Artigo':
+                $('#artigo').show();
+                break;
+            case 'Indisponivel':
+                $('#artigoNaoEncontrado').show();
+                break;
+            default:
+                $('#abaIndex').show();                
+        }
+    }
+
     return {
         loadLatestBlogPosts: loadLatestBlogPosts,
         loadBlogPost: loadBlogPost,
         loadFavouritePost: loadFavouritePost,
         loadMoreBlogPosts: loadMoreBlogPosts,
         ExitBlogPost: ExitBlogPost,
-        addFavourite: addFavourite
+        addFavourite: addFavourite,
+        controleExibicao: controleExibicao
     };
 });

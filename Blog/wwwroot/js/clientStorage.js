@@ -56,7 +56,7 @@
 
                 keys = keys.filter(function (a) { return a && !a.includes('#'); });
                 keys = keys.sort(function (a, b) { return a - b; });
-
+                debugger;
                 var index = keys.indexOf(oldestBlogPostId);
                 if (index === -1) { index = keys.length; }
                 if (index === 0) { resolve([]); return; }
