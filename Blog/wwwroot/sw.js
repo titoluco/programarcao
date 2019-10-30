@@ -1,7 +1,7 @@
 "use strict";
 importScripts('lib/localforage/localforage.min.js');
 
-var cacheName = 'ver1Cache';
+var cacheName = 'v21Cache';
 
 
 //var blogCacheFiles = [

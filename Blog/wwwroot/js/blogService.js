@@ -42,6 +42,7 @@
             .then(function (status) {
                 //$('#connection-status').html(status);
                 $('#connection-status').removeClass('alert alert-info show');
+                controleExibicao('Index');
 
                 if (status.indexOf('Conexão OK') !== -1) {
                     mostraDialogo(status, 'success', 5000);
@@ -56,8 +57,7 @@
                 clientStorage.getPosts()
                     .then(function (posts) {
                         template.appendBlogList(posts);
-                        marcarFavoritos(posts);
-                        controleExibicao('Index');
+                        marcarFavoritos(posts);                        
                     });
             });
     }
@@ -67,6 +67,7 @@
                 //$('#connection-status').html(status);
                 $('#connection-status').removeClass('alert alert-info show');
                 mostraDialogo(status, 'success', 5000);
+                controleExibicao('Index');
 
                 clientStorage.getFavouritePosts()
                     .then(function (posts) {
@@ -103,7 +104,7 @@
                         if (!data) {
                             template.showBlogItemNotFound(link);
                             //$("#modalDialog").modal("show");
-                            controleExibicao('Indisponivel');
+                            controleExibicao('Artigo');
                         } else {
                             var converter = new showdown.Converter();
                             html = converter.makeHtml(data);

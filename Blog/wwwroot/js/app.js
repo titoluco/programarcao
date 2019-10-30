@@ -55,10 +55,15 @@ window.pageEvents = {
     VoltarPosts: function () {
         blogService.controleExibicao('abaIndex');
     },
-    AlterarVisualizacao: function () {
+    AlterarVisualizacao: function (modo) {
         $('#blog-list').html("");
         oldestBlogPostId = '';
         var text = $('#modoVisualizacao').text();
+
+        if (modo === '2') { /* inverte para manter a mesma visualização */
+            text = text === 'Favoritos' ? 'Todos os posts' : 'Favoritos';
+        }
+
         if (text === 'Favoritos') {
             blogService.loadFavouritePost();
             $('#modoVisualizacao').text('Todos os posts');
@@ -67,6 +72,7 @@ window.pageEvents = {
             blogService.loadLatestBlogPosts();
             $('#modoVisualizacao').text('Favoritos');
         }
+        localStorage.setItem('oldestBlogPostId', JSON.stringify(''));
     },
     tryAddHomeScreen: function () {
         defferedPrompt.prompt();
@@ -108,23 +114,9 @@ window.pageEvents = {
                 }
             });
         });
+        window.pageEvents.AlterarVisualizacao('2');
     }
 };
-
-if ($('#abaIndex').is(":hidden")) {
-    $('#verMais').hide();
-    blogService.loadFavouritePost();
-}
-else {
-
-    if (isMobile.any()) {
-        $('#verMais').show();
-    }
-    else {
-        $('#verMais').hide();
-    }
-    blogService.loadLatestBlogPosts();
-}
 
 //if ($("#blog-title").html()) {
 //    if (isMobile.any()) {
@@ -149,11 +141,29 @@ else {
 
 $(document).ready(function () {
     $(this).scrollTop(0);
+
+    if ($('#abaIndex').is(":hidden")) {
+        $('#verMais').hide();
+        blogService.loadFavouritePost();
+    }
+    else {
+
+        if (isMobile.any()) {
+            $('#verMais').show();
+        }
+        else {
+            $('#verMais').hide();
+        }
+        blogService.loadLatestBlogPosts();
+    }
+    localStorage.setItem('oldestBlogPostId', JSON.stringify(''));
 });
 
 $(window).scroll(function () {
 
-    if (isMobile.any() || $('#abaIndex').is(":hidden")) {
+    var text = $('#modoVisualizacao').text();
+
+    if (isMobile.any() || text !== 'Favoritos') {
         return;
     }
     var calc = parseFloat($(document).height() - $(window).height());
