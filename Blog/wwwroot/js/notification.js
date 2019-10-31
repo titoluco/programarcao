@@ -2,7 +2,8 @@ function mostraDialogo(mensagem, tipo, tempo){
     
     // se houver outro alert desse sendo exibido, cancela essa requisição
     if($("#message").is(":visible")){
-        //return false;
+        return false;
+        //$("#message").hide();
     }
 
     // se não setar o tempo, o padrão é 3 segundos
